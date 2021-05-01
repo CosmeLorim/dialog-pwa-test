@@ -12,12 +12,6 @@ export const find = ({
 
   return regex.test(d.name.toLocaleLowerCase())
 })
-  /** TODO: adicionar consulta com regex */
-  /** TODO: adicionar consulta em mais campos */
-  const nameIsEqual = d.name === search
-
-  return nameIsEqual
-})
 
 export const findAll = () => {
   return _db
