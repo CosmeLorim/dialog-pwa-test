@@ -30,6 +30,7 @@ export const typeDefs = gql`
 
   type Query {
     list(search: String): [User]!
+    find(_id: ID!): User
   }
 `
 
