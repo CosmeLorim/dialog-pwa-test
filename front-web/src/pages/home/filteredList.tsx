@@ -7,7 +7,7 @@ import { User } from '../../types'
 
 import Loading from '../../components/loading'
 import HandleError from '../../components/handleError'
-import UserDetail from '../../components/userDetail'
+import FriendProfile from '../../components/friendProfile'
 
 const LIST_USERS = gql`
   query list ($search: String) {
@@ -35,7 +35,7 @@ const FilteredList = ({ search }: { search: string }) => {
 
   const listOfUser = data.list.map(user => (
     <Link to={`/${user._id}`} key={user.index}>
-      <UserDetail user={user} />
+      <FriendProfile user={user} />
     </Link>
   ))
 
