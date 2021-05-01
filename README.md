@@ -94,3 +94,10 @@ Deverá executar com `yarn start` na porta 3000
 
 ### Anotações que valem menção colocar aqui:
 ...
+
+### Requisição funcional utilizando curl
+``` base
+$ curl --location --request POST 'http://localhost:4000/graphql' \
+  --header 'Content-Type: application/json' \
+  --data-raw '{"query":"query  {\n  list(search: \"we in\") {\n    _id\n    index\n    picture\n    age\n    eyeColor\n    name\n    company\n    email\n    phone\n    friends {\n      _id\n      index\n      picture\n      age\n      eyeColor\n      name\n      company\n      email\n      phone\n    }\n    greeting\n  }\n}\n","variables":{}}'
+```
