@@ -5,7 +5,7 @@ import {
 
 export const resolvers = {
   Query: {
-    users: (search?: string): User[] => {
+    list: (parent: null, { search }: { search?: string }): User[] => {
       if (search) return db.find({ search })
 
       return db.findAll()
