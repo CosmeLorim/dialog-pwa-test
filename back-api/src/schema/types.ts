@@ -1,4 +1,4 @@
-declare type ID = string
+export declare type ID = string
 
 export interface People {
   _id: ID
