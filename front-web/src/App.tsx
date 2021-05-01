@@ -9,6 +9,7 @@ import {
 
 import GlobalStyle from './global'
 import Home from './pages/home/'
+import FriendDetails from './pages/friendDetails'
 
 function App() {
 
@@ -20,6 +21,9 @@ function App() {
           <Switch>
             <Route path="/" exact>
               <Home />
+            </Route>
+            <Route path='/:id'>
+              <FriendDetails />
             </Route>
           </Switch>
         </div>
