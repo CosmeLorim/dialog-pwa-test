@@ -1,16 +1,27 @@
-import { User } from '../schema/types'
 import _db from './_db'
+import {
+  ID,
+  User,
+} from '../schema/types'
 
 export const find = ({
   search,
 }: {
   search: string,
 }): User[] => _db.filter((d: User) => {
-  /** TODO: adicionar consulta com regex */
-  /** TODO: adicionar consulta em mais campos */
-  const nameIsEqual = d.name === search
+  const regex = new RegExp(search.toLowerCase().split(' ').join('|'))
 
-  return nameIsEqual
+  return regex.test(d.name.toLocaleLowerCase())
+})
+
+export const findOne = ({
+  _id,
+}: {
+  _id?: ID,
+}) => _db.find(d => {
+  const idIsEqual = d._id === _id
+
+  return idIsEqual
 })
 
 export const findAll = () => {

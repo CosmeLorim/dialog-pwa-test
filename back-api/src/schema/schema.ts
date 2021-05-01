@@ -29,8 +29,8 @@ export const typeDefs = gql`
   }
 
   type Query {
-    # TODO: Imeplementar paginação via indice
-    users(search: String): [User]!
+    list(search: String): [User]!
+    find(_id: ID!): User
   }
 `
 
