@@ -10,8 +10,8 @@ import HandleError from '../../components/handleError'
 import FriendProfile from '../../components/friendProfile'
 
 const LIST_USERS = gql`
-  query list {
-    list {
+  query list ($search: String) {
+    list (search: $search) {
       _id
       name
       age
@@ -23,8 +23,12 @@ const LIST_USERS = gql`
   }
 `
 
-const List = () => {
-  const { loading, error, data } = useQuery<{ list: User[] }>(LIST_USERS)
+const FilteredList = ({ search }: { search: string }) => {
+  const { loading, error, data } = useQuery<{ list: User[] }>(LIST_USERS, {
+    variables: {
+      search,
+    },
+  })
 
   if (loading) return <Loading />
   if (error || data === undefined) return <HandleError />
@@ -42,4 +46,4 @@ const List = () => {
   )
 }
 
-export default List
+export default FilteredList
