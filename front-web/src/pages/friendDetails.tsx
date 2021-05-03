@@ -67,7 +67,7 @@ const FriendDetail = () => {
   })
 
   if (loading) return <Loading />
-  if (error || data === undefined) return <HandleError />
+  if (error || data === undefined) return <HandleError error={error} />
 
   if (data.find === null) return <PageNotFound />
 
