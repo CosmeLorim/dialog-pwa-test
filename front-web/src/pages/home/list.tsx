@@ -50,7 +50,7 @@ const List = ({ search }: { search: string }) => {
   })
 
   if (loading) return <Loading />
-  if (error || data === undefined) return <HandleError />
+  if (error || data === undefined) return <HandleError error={error} />
 
   const listOfUser = data.list.map(user => (
     <FriendProfile to={`/${user._id}`} key={user.index} user={user} />
