@@ -1,4 +1,5 @@
 import React from 'react'
+import style from 'styled-components'
 import { gql, useQuery } from '@apollo/client'
 import {
   useParams,
@@ -23,12 +24,37 @@ const GET_FRIEND_DETAILS = gql`
         _id
         name
         age
+        eyeColor
         index
         picture
         company
         email
       }
     }
+  }
+`
+
+const GridProfile = style.div`
+  padding-top: 15px;
+  display: flex;
+  grid-gap: 15px;
+`
+
+const GridFriends = style.div`
+  display: grid;
+  grid-gap: 20px;
+
+  @media only screen and (max-width: 620px) {
+    grid-template-columns: 1fr;
+  }
+  @media only screen and (min-width: 621px) and (max-width: 850px) {
+    grid-template-columns: 1fr 1fr;
+  }
+  @media only screen and (min-width: 851px) and (max-width: 1100px) {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  @media only screen and (min-width: 1101px) {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
   }
 `
 
@@ -52,13 +78,22 @@ const FriendDetail = () => {
   return (
     <div>
       <Header search={(v: string) => { console.log({ v }) }} />
-      <img src={data.find.picture ?? ''} alt={`Foto de perfil de ${data.find.name ?? ''}`} />
-      {data.find.name ?? ''}
-      <p>age: {data.find.age ?? ''}</p>
-      <p>email: {data.find.email ?? ''}</p>
-
+      <GridProfile>
+        <img
+          width='100px'
+          src={data.find.picture ?? ''}
+          alt={`Foto de perfil de ${data.find.name ?? ''}`}
+        />
+        <div>
+          <p>name: {data.find.name ?? ''}</p>
+          <p>age: {data.find.age ?? ''}</p>
+          <p>email: {data.find.email ?? ''}</p>
+        </div>
+      </GridProfile>
       <h2>Friends:</h2>
-      {friends}
+      <GridFriends>
+        {friends}
+      </GridFriends>
     </div>
   )
 }
