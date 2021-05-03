@@ -15,4 +15,8 @@ export default createGlobalStyle`
     margin: 16px 16px;
     font-size: bold;
   }
+  p {
+    margin-block-start: 0px;
+    margin-block-end: 0px;
+  }
 `;
